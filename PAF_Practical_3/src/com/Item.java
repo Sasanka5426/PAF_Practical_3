@@ -16,6 +16,7 @@ public class Item {
 		}
 		return con;
 	}
+	
 	public String insertItem(String code, String name, String price, String desc) {
 		String output = "";
 		try {
@@ -99,5 +100,39 @@ public class Item {
 		}
 		return output;
 	}
+	
+	public String deleteItem(String id) {
+		String output = "";
+		
+		try {
+			Connection con = connect();
+			if(con == null) {
+				return "Error while connecting the database to delete items.";
+			}
+			
+			String query = "DELETE FROM items WHERE itemID = ?";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			
+			int ID = Integer.parseInt(id);
+			//binding the id
+			
+			preparedStmt.setInt(1,ID);
+			
+			//execute the statement
+			preparedStmt.executeUpdate();
+			con.close();
+			output = "Item deleted successfully";
+		}
+		catch(Exception e) {
+			output = "Error while deleting";
+			System.err.println(e.getMessage());
+		}
+		return output;
+	}
+	
+	
+	
+		
+	
 
 }

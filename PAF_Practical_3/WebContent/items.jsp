@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+   
+    
+    
     <%
     	if(request.getParameter("itemCode") != null){
     		Item itemObj = new Item();
@@ -10,10 +13,24 @@
     											request.getParameter("itemName"),
     											request.getParameter("itemPrice"),
     											request.getParameter("itemDesc"));
+    		
     		session.setAttribute("statusMsg", stsMsg);
     		
     	}
     %>
+    
+    <%
+    	if(request.getParameter("itemID") != null){
+    		Item itemObj = new Item();
+    		
+    		String stsMsg = itemObj.deleteItem(request.getParameter("itemID"));
+    		
+    		session.setAttribute("statusMsg", stsMsg);
+    		
+    	}
+    %>
+    
+    
     
 <!DOCTYPE html>
 <html>
