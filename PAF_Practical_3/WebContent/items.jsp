@@ -17,9 +17,7 @@
     		session.setAttribute("statusMsg", stsMsg);
     		
     	}
-    %>
     
-    <%
     	if(request.getParameter("itemID") != null){
     		Item itemObj = new Item();
     		
@@ -28,7 +26,15 @@
     		session.setAttribute("statusMsg", stsMsg);
     		
     	}
-    %>
+    	
+    	
+    	
+    	
+    
+    	
+    	
+    	
+    %>  
     
     
     
@@ -41,6 +47,7 @@
 <body>
 
 	<h1>Items Management</h1>
+	<!--  
 	<form method="post" action="items.jsp">
 		Item Code : <input name="itemCode" type="text"><br>
 		Item Name : <input name="itemName" type="text"><br>
@@ -48,6 +55,46 @@
 		Item Description : <input name="itemDesc" type="text"><br>
 		<input name="btnSubmit" type="submit" value="Save">
 	</form>
+	-->
+	
+	<%--
+		if(request.getParameter("itemIdForUpdate") == null)){
+			out.print("<form method='post' action='items.jsp'>"
+					+"Item Code : <input name='itemCode' type='text'><br>"
+					+"Item Name : <input name='itemName' type='text'><br>"
+					+"ItemPrice : <input name='itemPrice' type='text'><br>"
+					+"Item Description : <input name='itemDesc' type='text'><br>"
+					+"<input name='btnSubmit' type='submit' value='Save'>"
+					+"</form>");
+		}
+		else{
+			Item itemObj = new Item();
+			out.print(itemObj.readOneItem(request.getParameter("itemIdForUpdate")));
+		}
+	
+	--%>
+	<%
+		if(request.getParameter("action") != null){
+			if(request.getParameter("action").toString().equalsIgnoreCase("select")){
+				Item itemObj = new Item();
+				out.print(itemObj.readOneItem(Integer.parseInt(request.getParameter("itemIdForUpdate"))));
+			}
+		}
+		else{
+			out.print("<form method='post' action='items.jsp'>"
+					+"Item Code : <input name='itemCode' type='text'><br>"
+					+"Item Name : <input name='itemName' type='text'><br>"
+					+"ItemPrice : <input name='itemPrice' type='text'><br>"
+					+"Item Description : <input name='itemDesc' type='text'><br>"
+					+"<input name='btnSubmit' type='submit' value='Save'>"
+					
+					
+					+"</form>");
+		}
+	%>
+	
+	
+	
 	
 	<%
 		out.print(session.getAttribute("statusMsg"));
@@ -57,6 +104,8 @@
 		Item itemObj = new Item();
 		out.print(itemObj.readItems());
 	%>
+	
+
 
 
 
