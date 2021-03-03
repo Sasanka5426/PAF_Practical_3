@@ -121,7 +121,7 @@
 			}
 		}
 		else{
-			out.print("<form method='post' action='itemps.jsp'>" + "<input name='action' value='insert' type='hidden'>"
+			out.print("<form method='post' action='items.jsp'>" + "<input name='action' value='insert' type='hidden'>"
 					+ "Item code: <input name='itemCode' type='text'><br>"
 					+ "Item name: <input name='itemName' type='text'><br>"
 					+ "Item price: <input name='itemPrice' type='text'><br>"
