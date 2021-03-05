@@ -60,7 +60,7 @@ public class Item {
 				return "Error while connecting to the database for reading data.";
 			}
 			
-			output = "<table border='1'>"
+			output = "<table border='1' class='table table-striped'>"
 					+ "<tr>"
 					+ "<th>Item Code</th>"
 					+ "<th>Item Name</th>"
@@ -90,12 +90,12 @@ public class Item {
 						+ "<form method='post' action='items.jsp'>"
 						+ "<input name='itemID' type='hidden' value='"+itemID+"'>"
 						+ "<input name='action' value='select' type='hidden'>"
-						+ "<input name='btnUpdate' type='submit' value='Update'>"
+						+ "<input name='btnUpdate' type='submit' value='Update' class='btn btn-warning'>"
 						+ "</form>"
 						+ "</td>"
 						+ "<td>"
 						+ "<form method='post' action='items.jsp'>"
-						+ "<input name='btnRemove' type='submit' value='Remove'>"
+						+ "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
 						+ "<input name='action' value='delete' type='hidden'>"
 						+ "<input name='itemID' type='hidden' value='"+itemID+"'>"
 						+ "</form>"
@@ -173,13 +173,13 @@ public class Item {
 				
 				output += "<form method=post action=items.jsp>"
 						+ "<input name='action' value='update' type='hidden'>"
-						+ "Item ID : '"+itemID+"'<br>"
-						+ "Item Code : <input name=itemCode type=text value='"+itemCode+"'><br>"
-						+ "Item Name : <input name=itemName type=text value='"+itemName+"'><br>"
-						+ "Item Price : <input name=itemPrice type=text value='"+itemPrice+"'><br>"
-						+ "Item Description : <input name=itemDesc type=text value='"+itemDesc+"'><br>"
+						+ "<b>Item ID :</b> "+itemID+"<br>"
+						+ "<b>Item Code :</b> <input name=itemCode type=text value='"+itemCode+"' class='form-control'><br>"
+						+ "<b>Item Name :</b> <input name=itemName type=text value='"+itemName+"' class='form-control'><br>"
+						+ "<b>Item Price :</b> <input name=itemPrice type=text value='"+itemPrice+"' class='form-control'><br>"
+						+ "<b>Item Description :</b> <input name=itemDesc type=text value='"+itemDesc+"' class='form-control'><br>"
 						+ "<input name='itemID' type='hidden' value='"+itemID+"'>"
-					    + "<input name=btnSubmit type=submit value=Update>"
+					    + "<input name=btnSubmit type=submit value=Update class='btn btn-warning'>"
 					    + "</form>";
 			}
 			con.close();

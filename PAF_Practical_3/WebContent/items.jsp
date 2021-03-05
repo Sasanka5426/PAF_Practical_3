@@ -44,6 +44,9 @@
 				session.setAttribute("statusMsg", stsMsg);
     		}
     	}
+    	else{
+    		session.setAttribute("statusMsg", "");
+    	}
     %>
     
     
@@ -52,11 +55,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="Views/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
 <body>
 
-	<h1>Items Management</h1>
+<div class="container-fluide">
+	
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+		
+
+
+	<center><h1>Items Management</h1></center>
 	<!--  
 	<form method="post" action="items.jsp">
 		Item Code : <input name="itemCode" type="text"><br>
@@ -102,33 +114,43 @@
 		}
 	--%>
 	
-	
-	<%
-		if(request.getParameter("action") != null){
-			if(request.getParameter("action").toString().equalsIgnoreCase("select")){
-				Item itemObj = new Item();
-				out.print(itemObj.readSelectedItem(Integer.parseInt(request.getParameter("itemID"))));
+			<div class="card">
+			<div class="card body">
+			
+				<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+				<%
+						if(request.getParameter("action") != null){
+						if(request.getParameter("action").toString().equalsIgnoreCase("select")){
+							Item itemObj = new Item();
+							out.print(itemObj.readSelectedItem(Integer.parseInt(request.getParameter("itemID"))));
 				
-			}
-			else{
-				out.print("<form method='post' action='items.jsp'>" + "<input name='action' value='insert' type='hidden'>"
-						+ "Item Code : <input name='itemCode' type='text'><br>"
-						+ "Item Name : <input name='itemName' type='text'><br>"
-						+ "Item price: <input name='itemPrice' type='text'><br>"
-						+ "Item description: <input name='itemDesc' type='text'><br>"
-						+ "<input name='btnSubmit' type='submit' value='Save'>"
-						+ "</form>");
-			}
-		}
-		else{
-			out.print("<form method='post' action='items.jsp'>" + "<input name='action' value='insert' type='hidden'>"
-					+ "Item code: <input name='itemCode' type='text'><br>"
-					+ "Item name: <input name='itemName' type='text'><br>"
-					+ "Item price: <input name='itemPrice' type='text'><br>"
-					+ "Item description: <input name='itemDesc' type='text'><br>"
-					+ "<input name='btnSubmit' type='submit' value='Save'>" + "</form>");
-		}
-	%>
+						}
+						else{
+							out.print("<form method='post' action='items.jsp'>" + "<input name='action' value='insert' type='hidden'>"
+									+ "<b>Item Code :</b> <input name='itemCode' type='text' class='form-control'><br>"
+									+ "<b>Item Name :</b> <input name='itemName' type='text' class='form-control'><br>"
+									+ "<b>Item price:</b> <input name='itemPrice' type='text' class='form-control'><br>"
+									+ "<b>Item description:</b> <input name='itemDesc' type='text' class='form-control'><br>"
+									+ "<input name='btnSubmit' type='submit' value='Save' class='btn btn-primary'>"
+									+ "</form>");
+						}
+					}
+					else{
+						out.print("<form method='post' action='items.jsp'>" + "<input name='action' value='insert' type='hidden'>"
+								+ "<b>Item code:</b> <input name='itemCode' type='text' class='form-control'><br>"
+								+ "<b>Item name:</b> <input name='itemName' type='text' class='form-control'><br>"
+								+ "<b>Item price:</b> <input name='itemPrice' type='text' class='form-control'><br>"
+								+ "<b>Item description:</b> <input name='itemDesc' type='text' class='form-control'><br>"
+								+ "<input name='btnSubmit' type='submit' value='Save' class='btn btn-primary'>" + "</form>");
+					}
+				%>
+				</div>
+				<div class="col-md-2"></div>
+				</div>
+			</div>
+			</div>
 	
 	
 	
@@ -137,16 +159,32 @@
 	
 	
 	
-	<%
-		out.print(session.getAttribute("statusMsg"));
-	%>
-	<br>
-	<%
-		Item itemObj = new Item();
-		out.print(itemObj.readItems());
-	%>
+			<div class="alert alert-success">
+			<%
+				out.print(session.getAttribute("statusMsg"));
+				session.setAttribute("statusMsg", "");
+			%>
+			</div>
 	
-
+	
+			<br>
+	
+	
+		
+			<%
+				Item itemObj = new Item();
+				out.print(itemObj.readItems());
+			%>
+			
+	
+	
+	
+	
+	
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
 
 
 
